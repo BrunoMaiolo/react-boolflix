@@ -9,12 +9,19 @@ function App() {
   const [movies, setMovies] = useState([]);
 
  const fetchMovies = async (query) => {
-  const response = await fetch(
+
+  const movieRes = await fetch(
     `${API_URL}/search/movie?api_key=${API_KEY}&query=${query}&language=it-IT`
   );
 
-  const data = await response.json();
-  setMovies(data.results);
+  const tvRes = await fetch(
+    `${API_URL}/search/tv?api_key=${API_KEY}&query=${query}&language=it-IT`
+  );
+
+  const movieData = await movieRes.json();
+  const tvData = await tvRes.json();
+
+  setMovies([...movieData.results, ...tvData.results]);
 };
 
   return (
