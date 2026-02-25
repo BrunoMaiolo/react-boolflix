@@ -14,34 +14,23 @@ function MovieCard({ movie }) {
   }
 
   return (
-    <li className="list-group-item">
+    <div className="movie-card">
+      {posterUrl && <img src={posterUrl} alt={movie.title} />}
 
-      {posterUrl && (
-        <img
-          src={posterUrl}
-          alt={movie.title}
-          style={{ width: "150px", marginBottom: "10px" }}
-        />
-      )}
+      <div className="overlay">
+        <h5>{movie.title}</h5>
+        <p>Titolo originale: {movie.original_title}</p>
 
-      <h5>{movie.title}</h5>
-      <p>Titolo originale: {movie.original_title}</p>
+        <p>
+          Lingua:{" "}
+          <img src={getFlagUrl(movie.original_language)} alt="" />
+        </p>
 
-      <p>
-        Lingua:{" "}
-        {getFlagUrl(movie.original_language) ? (
-          <img
-            src={getFlagUrl(movie.original_language)}
-            alt={movie.original_language}
-          />
-        ) : (
-          movie.original_language
-        )}
-      </p>
-
-      <p>Voto: {stars}</p>
-    </li>
-  )
+        <p>Voto: {stars}</p>
+        <p className="overview">{movie.overview}</p>
+      </div>
+    </div>
+  );
 }
 
 export default MovieCard

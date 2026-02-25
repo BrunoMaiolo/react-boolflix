@@ -4,6 +4,7 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import { API_KEY, API_URL } from "./config/api";
 import MovieCard from "./components/MovieCard";
+import './App.css'
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -25,18 +26,23 @@ function App() {
 };
 
   return (
-    <div className="container py-4">
-      <h1 className="mb-4">Boolflix 🎬</h1>
-
+      <>
+    
+    <header className="navbar">
+      <div className="logo">BOOLFLIX</div>
       <SearchBar onSearch={fetchMovies} />
+    </header>
 
-      <ul className="list-group">
+    
+    <div className="container">
+      <ul className="movies-grid">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </ul>
     </div>
-  );
+  </>
+);
 }
 
 
