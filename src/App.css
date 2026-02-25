@@ -6,7 +6,9 @@ body {
 #root {
   width: 100%;
 }
-
+html, body, #root {
+  height: 100%;
+}
 
 .movie-card {
   position: relative;
